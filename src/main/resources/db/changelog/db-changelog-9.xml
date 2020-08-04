@@ -1,0 +1,21 @@
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+
+<changeSet id="create_table_type_teotory_log_tile" author="ss">
+    <createTable tableName="LOG_TIME_INCOME_AREA" schemaName="oil">
+        <column name="ID" type="BIGINT" autoIncrement="true">
+            <constraints primaryKey="true" nullable="false"/>
+        </column>
+        <column name="DATE" type="datetime2"/>
+        <column name="IMAGE" type="BLOB"></column>
+        <column name="CAR_ID" type="bigint">
+            <constraints nullable="false" foreignKeyName="FKL_OG_CAR_ID" references="oil.CAR(ID)"/>
+        </column>
+    </createTable>
+</changeSet>
+</databaseChangeLog>

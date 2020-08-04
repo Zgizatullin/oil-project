@@ -1,0 +1,38 @@
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+
+<changeSet id="create_table_petrol_income" author="ss">
+    <createTable tableName="STORAGE_HISTORY_HEADER" schemaName="oil">
+        <column name="ID" type="BIGINT" autoIncrement="true"   >
+            <constraints primaryKey="true" nullable="false" />
+        </column>
+        <column name="DATE" type="datetime2" >
+        <constraints  nullable="false" />
+    </column>
+        <column name="CAR_ID" type="bigint">
+            <constraints nullable="false" foreignKeyName="FKL_STHG_CAR_ID" references="oil.CAR(ID)"/>
+        </column>
+        <column name="STORAGE_ID" type="bigint">
+        <constraints nullable="false" foreignKeyName="FKL_STH_STORAGE_ID" references="oil.CAR(ID)"/>
+    </column>
+        <column name="ASN_ID" type="bigint">
+            <constraints nullable="false" foreignKeyName="FKL_STH_ASN_ID" references="oil.CAR(ID)"/>
+        </column>
+        <column name="INVOICE_NUMBER" type="nvarchar(30)" >
+            <constraints  nullable="false" />
+        </column>
+        <column name="COMMENT" type="NVARCHAR(60)"/>
+        <column name="petrol_type_id" type="bigint" >
+            <constraints nullable="false" foreignKeyName="FKI_PETROL_TYPE_ID" references="oil.PETROL_TYPE(ID)"/>
+        </column>
+        <column name="metering_type" type="Int"/>
+        <column name="record_type" type="int"/>
+        <column name="DOC_ID" type="BIGINT"></column>
+    </createTable>
+</changeSet>
+</databaseChangeLog>

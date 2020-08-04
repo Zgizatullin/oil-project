@@ -1,0 +1,20 @@
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+
+<changeSet id="create_table_type_inventory" author="ss">
+    <createTable tableName="INVENTORY" schemaName="oil">
+        <column name="ID" type="BIGINT" autoIncrement="true">
+            <constraints primaryKey="true" nullable="false"/>
+        </column>
+        <column name="DATE" type="datetime2"/>
+        <column name="CAPACITY" type="decimal"></column>
+        <column name="MASS" type="decimal"></column>
+        <column name="DENSITY" type="decimal"></column>
+    </createTable>
+</changeSet>
+</databaseChangeLog>

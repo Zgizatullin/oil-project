@@ -1,0 +1,22 @@
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+    <changeSet id="create_cross_asn_petrol_table" author="ss">
+    <createTable tableName="PETROL2ASN" schemaName="oil">
+        <column name="ID" type="BIGINT" autoIncrement="true">
+            <constraints primaryKey="true" nullable="false"/>
+        </column>
+        <column name="PETROL_ID" type="BIGINT" >
+            <constraints nullable="false" foreignKeyName="FKA_STORAGE_SPETTI_TYPE_ID" references="OIL.PETROL_TYPE(ID)"/>
+        </column>
+        <column name="ASN_TYPE_ID" type="BIGINT" >
+            <constraints nullable="false" foreignKeyName="FKA_ASN_STORAGPETE_TYPE_ID" references="OIL.ASN(ID)"/>
+        </column>
+        <column name="COMMENT" type="nvarchar(50)"/>
+    </createTable>
+</changeSet>
+</databaseChangeLog>

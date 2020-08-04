@@ -1,0 +1,30 @@
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+
+    <changeSet id="create_table_storage" author="ss">
+        <createTable tableName="STORAGE_JOURNAL_STRING" schemaName="oil">
+            <column name="ID" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="DATE" type="datetime2">
+                <constraints nullable="false"/>
+            </column>
+            <column name="HEADER_ID" type="bigint">
+                <constraints nullable="false" foreignKeyName="FKL_HEADER_ID" references="oil.STORAGE_HISTORY_HEADER(ID)"/>
+            </column>
+            <column name="VOLUME" type="decimal">
+                <constraints nullable="false"/>
+            </column>
+            <column name="DENSITY" type="decimal">
+                <constraints nullable="false"/>
+            </column>
+            <column name="MASS" type="decimal">
+                <constraints nullable="false"/>
+            </column>
+            <column name="COMMENT" type="NVARCHAR(60)"/>
+           </createTable>
+    </changeSet>
+</databaseChangeLog>

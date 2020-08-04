@@ -1,0 +1,50 @@
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+
+<changeSet id="create_table_type_storage_for" author="ss">
+    <createTable tableName="CURRENT_AVAILABILITY" schemaName="oil">
+        <column name="ID" type="BIGINT" autoIncrement="true"   >
+            <constraints primaryKey="true" nullable="false" />
+        </column>
+        <column name="STORAGE_TYPE_ID" type="BIGINT" >
+        <constraints nullable="false" foreignKeyName="FKA_STORAGE_STORAGE_TYPE_ID" references="OIL.STORAGE(ID)"/>
+    </column>
+        <column name="PETROL_TYPE_ID" type="BIGINT" >
+            <constraints nullable="false" foreignKeyName="FKA_STORAGE_PETROL_TYPE_ID" references="OIL.PETROL_TYPE(ID)"/>
+        </column>
+         <column name="VOLUME" type="decimal"></column>
+         <column name="MASS" type="decimal"></column>
+         <column name="DENSITY" type="decimal"></column>
+    </createTable>
+    <createTable tableName="PETROL_CAR_INFO" schemaName="oil">
+        <column name="ID" type="BIGINT" autoIncrement="true">
+            <constraints primaryKey="true" nullable="false"/>
+        </column>
+        <column name="CITY_ID" type="INT">
+            <constraints nullable="false" foreignKeyName="FKA_CITY_ID" references="OIL.CITY(ID)"/>
+        </column>
+        <column name="MODEL_CAR_ID" type="INT">
+            <constraints nullable="false" foreignKeyName="FKA_MODEL_CAR_ID" references="OIL.MODEL_CAR(MODEL_CAR_ID)"/>
+        </column>
+
+        <column name="CAR_TYPE_ID" type="BIGINT">
+            <constraints nullable="false" foreignKeyName="FKA_CAR_TYPE_ID" references="OIL.CAR_TYPE(ID)"/>
+        </column>
+        <column name="YEAR" type="INT">
+            <constraints nullable="false"/>
+        </column>
+        <column name="COMPONENT" type="NVARCHAR(30)">
+            <constraints nullable="false" />
+        </column>
+        <column name="CAPACITY" type="DECIMAL">
+            <constraints nullable="false"/>
+        </column>
+        <column name="ADDITIONAL"  type="VARCHAR(200)"></column>
+    </createTable>
+</changeSet>
+</databaseChangeLog>

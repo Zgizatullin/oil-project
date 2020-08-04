@@ -1,0 +1,145 @@
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+
+    <changeSet id="create_table_doc" author="ss">
+        <createTable tableName="EMPLOYEE_TYPE" schemaName="oil">
+            <column name="ID" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="nvarchar(250)"/>
+            <column name="comment" type="nvarchar(250)"/>
+
+        </createTable>
+        <createTable tableName="EMPLOYEE" schemaName="oil">
+            <column name="ID" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="FIRST_NAME" type="nvarchar(50)"/>
+            <column name="LAST_NAME" type="nvarchar(50)"/>
+            <column name="MIDDLE_NAME" type="nvarchar(50)"/>
+            <column name="BIRTHDAY" type="Datetime2"/>
+            <column name="EMPLOY_TYPE_ID" type="BIGINT">
+                <constraints foreignKeyName="FKL_EMPLOYEE_EMPLOYEE_TYPE_ID"
+                             references="oil.EMPLOYEE_TYPE(ID)"/>
+            </column>
+        </createTable>
+        <createTable tableName="UNIT" schemaName="oil">
+
+            <column name="ID" type="Int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="nvarchar(250)"/>
+            <column name="comment" type="nvarchar(250)"/>
+
+        </createTable>
+        <createTable tableName="COMPANY" schemaName="oil">
+
+            <column name="ID" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="nvarchar(250)"/>
+            <column name="address" type="nvarchar(250)"/>
+
+        </createTable>
+        <createTable tableName="AZS" schemaName="oil">
+
+            <column name="ID" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="name" type="nvarchar(250)"/>
+            <column name="address" type="nvarchar(250)"/>
+
+        </createTable>
+        <createTable tableName="DOCUMENT" schemaName="oil">
+            <column name="DOC_ID" type="BIGINT" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="DOC_NUMBER" type="nvarchar(50)"/>
+            <column name="DATE" type="datetime2"/>
+            <column name="CAR_ID" type="BIGINT">
+                <constraints nullable="false" foreignKeyName="FKL_DOC_CAR_ID" references="oil.CAR(ID)"/>
+            </column>
+            <column name="CAR_TYPE_ID" type="BIGINT">
+                <constraints foreignKeyName="FKL_DOC_CAR_TYPE_ID" references="oil.CAR_TYPE(ID)"/>
+            </column>
+            <column name="WAYBILL" type="nvarchar(50)"/>
+            <column name="CODE" type="nvarchar(50)"/>
+            <column name="SERIA" type="nvarchar(50)"/>
+            <column name="CARRIER_ID" type="BIGINT">
+                <constraints nullable="false" foreignKeyName="FKL_DOC_CARRIER_ID" references="oil.COMPANY(ID)"/>
+            </column>
+            <column name="SHIPPER_ID" type="BIGINT">
+                <constraints nullable="false" foreignKeyName="FKL_DOC_SHIPPER_ID" references="oil.COMPANY(ID)"/>
+            </column>
+            <column name="CUSTOMER_ID" type="BIGINT">
+                <constraints nullable="false" foreignKeyName="FKL_DOC_CUSTOMER_ID" references="oil.COMPANY(ID)"/>
+            </column>
+            <column name="DRIVER_ID" type="BIGINT">
+                <constraints foreignKeyName="FKL_DOC_DRIVER_ID" references="oil.EMPLOYEE(ID)"/>
+            </column>
+            <column name="AZS_ID" type="BIGINT">
+                <constraints foreignKeyName="FKL_DOC_AZS_ID" references="oil.AZS(ID)"/>
+            </column>
+            <column name="CAR_TYPE_EXTRA_ID" type="BIGINT">
+                <constraints foreignKeyName="FKL_DOC_CAR_TYPE_EXTRA_ID" references="oil.CAR_TYPE(ID)"/>
+            </column>
+            <column name="RECEIVER_ID" type="BIGINT">
+                <constraints nullable="false" foreignKeyName="FKL_DOC_RECEIVER_ID" references="oil.COMPANY(ID)"/>
+            </column>
+            <column name="LOAD" type="nvarchar(250)"/>
+            <column name="UNLOAD" type="nvarchar(250)"/>
+            <column name="READDRESSING" type="nvarchar(250)"/>
+            <column name="READDRESSING_TRANSPORT" type="nvarchar(250)"/>
+            <column name="UNLOAD_AZS_ID" type="BIGINT">
+                <constraints foreignKeyName="FKL_DOC_UNLOAD_AZS_ID" references="oil.AZS(ID)"/>
+            </column>
+            <column name="LOAD_AZS_ID" type="BIGINT">
+                <constraints  foreignKeyName="FKL_DOC_LOAD_AZS_ID" references="oil.AZS(ID)"/>
+            </column>
+            <column name="TOTAL_COUNT" type="DECIMAL"/>
+            <column name="TOTAL_MASS_GROSS" type="DECIMAL"/>
+            <column name="TOTAL_SUMM" type="DECIMAL"/>
+            <column name="TOTAL_SUMM_CHAR" type="nvarchar(400)"/>
+            <column name="POINT_WEIGH_CHECK_COUNT" type="INT"/>
+            <column name="POINT_WEIGH_CHECK_PLACE" type="INT"/>
+            <column name="FINAL_TOTAL_MASS_GROSS" type="DECIMAL"/>
+            <column name="PASSED_EMPLOYEE_ID" type="nvarchar(400)">
+             </column>
+            <column name="GOT_EMPLOYEE_ID" type="nvarchar(400)">
+            </column>
+            <column name="MUNDER_NUN" type="nvarchar(400)"/>
+            <column name="MUNDER_DESCRIPTION" type="nvarchar(400)"/>
+            <column name="FINAL_PASSED_EMPLOYEE_ID" type="BIGINT">
+                <constraints  foreignKeyName="FKL_DOC_FPE_ID" references="oil.EMPLOYEE(ID)"/>
+            </column>
+            <column name="FINAL_GOT_EMPLOYEE_ID" type="BIGINT">
+                <constraints  foreignKeyName="FKL_DOC_FGE_ID" references="oil.EMPLOYEE(ID)"/>
+            </column>
+        </createTable>
+        <createTable tableName="NOMENCLATURE" schemaName="oil">
+
+            <column name="ID" type="Int" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="NUM_NUMBER" type="nvarchar(50)"/>
+            <column name="DOC_ID" type="BIGINT">
+                <constraints nullable="false" foreignKeyName="FKL_NUMENCLATURE_DOC_ID"
+                             references="oil.DOCUMENT(DOC_ID)"/>
+            </column>
+            <column name="PETROL_ID" type="BIGINT">
+                <constraints nullable="false" foreignKeyName="FKL_NUMENE_PETROL_ID" references="oil.PETROL_TYPE(ID)"/>
+            </column>
+            <column name="UNIT_ID" type="int">
+                <constraints nullable="false" foreignKeyName="FKL_NUMENE_UNIT_ID" references="oil.UNIT(ID)"/>
+            </column>
+            <column name="COUNT" type="DECIMAL"/>
+            <column name="SPECIFIC_WEIGHT" type="DECIMAL"/>
+            <column name="TEMPERATURE" type="DECIMAL"/>
+            <column name="MASS_GROSS" type="DECIMAL"/>
+
+        </createTable>
+    </changeSet>
+</databaseChangeLog>

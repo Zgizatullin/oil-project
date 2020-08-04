@@ -1,0 +1,47 @@
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+
+<changeSet id="tankers_information" author="ss">
+    <createTable tableName="CITY" schemaName="oil">
+        <column name="ID" type="INT" autoIncrement="true">
+            <constraints primaryKey="true" nullable="false"/>
+        </column>
+        <column name="NAME" type="NVARCHAR(100)">
+            <constraints nullable="false"/>
+        </column>
+    </createTable>
+  <createTable tableName="CAR" schemaName="oil">
+      <column name="ID" type="BIGINT" autoIncrement="true">
+          <constraints primaryKey="true" nullable="false"/>
+      </column>
+      <column name="NUMBER" type="NVARCHAR(20)">
+      <constraints nullable="false"/>
+      </column>
+      <column name="NUMBER_TRAILER" type="NVARCHAR(20)">
+          <constraints nullable="false"/>
+      </column>
+  </createTable>
+    <createTable tableName="MODEL_CAR" schemaName="oil">
+        <column name="MODEL_CAR_ID" type="INT" autoIncrement="true">
+            <constraints primaryKey="true" nullable="false"/>
+        </column>
+        <column name="NAME" type="NVARCHAR(30)">
+            <constraints nullable="false"/>
+        </column>
+    </createTable>
+    <createTable tableName="CAR_TYPE" schemaName="oil">
+        <column name="ID" type="BIGINT" autoIncrement="true">
+            <constraints primaryKey="true" nullable="false"/>
+        </column>
+        <column name="NAME" type="NVARCHAR(30)">
+            <constraints nullable="false"/>
+        </column>
+    </createTable>
+
+</changeSet>
+</databaseChangeLog>

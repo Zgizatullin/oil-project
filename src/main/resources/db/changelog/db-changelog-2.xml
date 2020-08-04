@@ -1,0 +1,20 @@
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd
+    http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+
+
+    <changeSet id="insert in petrol_type table" author="ss">
+    <insert tableName="PETROL_TYPE" schemaName="OIL">
+        <column name="name" value="АИ-92"/>
+    </insert>
+        <insert tableName="PETROL_TYPE" schemaName="OIL">
+            <column name="name" value="АИ-95"/>
+        </insert>
+        <insert tableName="PETROL_TYPE" schemaName="OIL">
+            <column name="name" value="АИ-96"/>
+        </insert>
+</changeSet>
+</databaseChangeLog>
